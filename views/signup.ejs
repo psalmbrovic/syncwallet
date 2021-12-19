@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" dir="">
+    <head>
+        <!-- Required Meta Tags Always Come First -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Title -->
+        <title>SyncWallet | Account Signup</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
+            integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+            type="text/css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+            integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+            type="text/css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap"
+            rel="stylesheet"
+        />
+        <!-- End Fonts -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/css/vendor.min.css"
+            type="text/css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/vendor/bootstrap-icons/font/bootstrap-icons.css"
+            type="text/css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/vendor/aos/dist/aos.css"
+            type="text/css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/css/theme.minc619.css?v=1.0"
+            type="text/css"
+        />
+        <style>
+            body,
+            html {
+                font-family: "Comfortaa", cursive;
+                /* font-weight: 700; */
+            }
+        </style>
+    </head>
+
+    <body>
+        <%- include('templates/navbar') %>
+
+        <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <div
+                class="
+                    container
+                    content-space-3 content-space-t-lg-4 content-space-b-lg-3
+                "
+            >
+                <div class="flex-grow-1 mx-auto" style="max-width: 28rem">
+                    <!-- Heading -->
+                    <div class="text-center mb-5 mb-md-7">
+                        <h1 class="h2">Welcome to SyncWallet</h1>
+                        <p>Fill out the form to get started.</p>
+                    </div>
+                    <!-- End Heading -->
+
+                    <!-- Form -->
+                    <form
+                        class=""
+                        method="POST"
+                        action=""
+                        _lpchecked="1"
+                        onsubmit="return handleSignup(event);"
+                    >
+                        <!-- Form -->
+                        <div class="mb-4">
+                            <label class="form-label" for="email"
+                                >Your email</label
+                            >
+                            <input
+                                type="email"
+                                class="form-control form-control-lg"
+                                name="email"
+                                id="email"
+                                placeholder="someone@example.com"
+                                aria-label="someone@example.com"
+                                required=""
+                                autocomplete="off"
+                            />
+                            <span class="invalid-feedback"
+                                >Please enter a valid email address.</span
+                            >
+                        </div>
+                        <!-- End Form -->
+
+                        <div class="mb-4">
+                            <label class="form-label" for="fullName"
+                                >Full name</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control form-control-lg"
+                                name="name"
+                                id="fullName"
+                                placeholder="John Doe"
+                                aria-label="John Doe"
+                                required=""
+                                autocomplete="off"
+                            />
+                            <span class="invalid-feedback"
+                                >Please your full name</span
+                            >
+                        </div>
+
+                        <!-- Form -->
+                        <div class="mb-4">
+                            <div
+                                class="
+                                    d-flex
+                                    justify-content-between
+                                    align-items-center
+                                "
+                            >
+                                <label class="form-label" for="password"
+                                    >Password</label
+                                >
+                            </div>
+
+                            <div
+                                class="input-group input-group-merge"
+                                data-hs-validation-validate-class=""
+                            >
+                                <input
+                                    type="password"
+                                    class="
+                                        js-toggle-password
+                                        form-control form-control-lg
+                                    "
+                                    name="password"
+                                    id="password"
+                                    placeholder="8+ characters required"
+                                    aria-label="8+ characters required"
+                                    required=""
+                                    minlength="8"
+                                    data-hs-toggle-password-options='{
+                     "target": "#changePassTarget",
+                     "defaultClass": "bi-eye-slash",
+                     "showClass": "bi-eye",
+                     "classChangeTarget": "#changePassIcon"
+                   }'
+                                    autocomplete="off"
+                                />
+                                <a
+                                    id="changePassTarget"
+                                    class="input-group-append input-group-text"
+                                    href="javascript:;"
+                                >
+                                    <i
+                                        id="changePassIcon"
+                                        class="bi-eye-slash"
+                                    ></i>
+                                </a>
+                            </div>
+
+                            <span class="invalid-feedback"
+                                >Please enter a valid password.</span
+                            >
+                        </div>
+                        <!-- End Form -->
+
+                        <div class="d-grid mb-3">
+                            <button
+                                id="signupButton"
+                                type="submit"
+                                class="btn btn-primary btn-lg"
+                                >Signup</button
+                            >
+                            <button
+                                type="button"
+                                id="loadingButton"
+                                style="display: none"
+                                disabled
+                                class="btn btn-primary btn-lg"
+                            >
+                                <div
+                                    class="spinner-border spinner-border-sm"
+                                    role="status"
+                                >
+                                    <span class="visually-hidden"
+                                        >Loading...</span
+                                    > </div
+                                >&nbsp;Please wait...</button
+                            >
+                        </div>
+
+                        <div class="text-center">
+                            <p
+                                >Already have an account?
+                                <a class="link" href="/auth/login"
+                                    >Login here</a
+                                ></p
+                            >
+                        </div>
+                    </form>
+                    <!-- End Form -->
+                </div>
+            </div>
+        </main>
+        <!-- ========== END MAIN CONTENT ========== -->
+
+        <%- include('templates/footer') %>
+
+        <!-- ========== SECONDARY CONTENTS ========== -->
+
+        <!-- Go To -->
+        <a
+            class="js-go-to go-to position-fixed"
+            href="javascript:;"
+            style="visibility: hidden"
+            data-hs-go-to-options='{
+                            "offsetTop": 700,
+                            "position": {
+                                "init": {
+                                "right": "2rem"
+                                },
+                                "show": {
+                                "bottom": "2rem"
+                                },
+                                "hide": {
+                                "bottom": "-2rem"
+                                }
+                            }
+                        }'
+        >
+            <i class="bi-chevron-up"></i>
+        </a>
+        <!-- ========== END SECONDARY CONTENTS ========== -->
+
+        <!-- JS Implementing Plugins -->
+        <script src="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/js/vendor.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/vendor/aos/dist/aos.js"></script>
+
+        <!-- JS Front -->
+        <script src="https://cdn.jsdelivr.net/gh/aoamusat/cdn/assets/js/theme.min.js"></script>
+
+        <!-- JS Plugins Init. -->
+        <script>
+            (function () {
+                // INITIALIZATION OF HEADER
+                // =======================================================
+                new HSHeader("#header").init();
+
+                // INITIALIZATION OF MEGA MENU
+                // =======================================================
+                new HSMegaMenu(".js-mega-menu", {
+                    desktop: {
+                        position: "left",
+                    },
+                });
+
+                // INITIALIZATION OF SHOW ANIMATIONS
+                // =======================================================
+                new HSShowAnimation(".js-animation-link");
+
+                // INITIALIZATION OF BOOTSTRAP VALIDATION
+                // =======================================================
+                HSBsValidation.init(".js-validate", {
+                    onSubmit: (data) => {
+                        data.event.preventDefault();
+                        alert("Submited");
+                    },
+                });
+
+                // INITIALIZATION OF BOOTSTRAP DROPDOWN
+                // =======================================================
+                HSBsDropdown.init();
+
+                // INITIALIZATION OF GO TO
+                // =======================================================
+                new HSGoTo(".js-go-to");
+
+                // INITIALIZATION OF AOS
+                // =======================================================
+                AOS.init({
+                    duration: 650,
+                    once: true,
+                });
+
+                // INITIALIZATION OF SWIPER
+                // =======================================================
+                var swiper = new Swiper(".js-swiper-software-hero", {
+                    preloaderClass: "custom-swiper-lazy-preloader",
+                    slidesPerView: 1,
+                    pagination: {
+                        el: ".js-swiper-software-hero-pagination",
+                        dynamicBullets: true,
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        380: {
+                            slidesPerView: 2,
+                            spaceBetween: 15,
+                        },
+                        580: {
+                            slidesPerView: 3,
+                            spaceBetween: 15,
+                        },
+                        768: {
+                            slidesPerView: 4,
+                            spaceBetween: 15,
+                        },
+                        1024: {
+                            slidesPerView: 5,
+                            spaceBetween: 30,
+                        },
+                    },
+                    on: {
+                        imagesReady: function (swiper) {
+                            const preloader = swiper.el.querySelector(
+                                ".js-swiper-software-hero-preloader",
+                            );
+                            preloader.parentNode.removeChild(preloader);
+                        },
+                    },
+                });
+
+                // INITIALIZATION OF NAV SCROLLER
+                // =======================================================
+                new HsNavScroller(".js-nav-scroller");
+            })();
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+            integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            const handleSignup = (event) => {
+                const form = document.getElementById("LoginForm");
+                const signupButton = $("#signupButton");
+                const loadingButton = $("#loadingButton");
+                event.preventDefault();
+
+                signupButton.hide();
+                loadingButton.show();
+
+                const email = $("#email").val();
+                const password = $("#password").val();
+                const name = $("#fullName").val();
+
+                axios
+                    .post(
+                        "/auth/signup",
+                        { email, password, name },
+                        {
+                            headers: {
+                                Accept: "application/json",
+                            },
+                        },
+                    )
+                    .then((response) => {
+                        signupButton.show();
+                        loadingButton.hide();
+                        const { userCreated, next, userExists } = response.data;
+                        if (userCreated) {
+                            swal(
+                                "Success",
+                                "Account created successfully!",
+                                "success",
+                            );
+
+                            setTimeout(function () {
+                                window.location.href = "/dashboard";
+                            }, 2000);
+                        } else if (userExists) {
+                            swal("Oops!", "User Already Exist!", "warning");
+                        } else {
+                            swal("Oops!", "An error has occurred!", "error");
+                        }
+                    })
+                    .catch((error) => {
+                        signupButton.show();
+                        loadingButton.hide();
+                        swal("Oops!", "Error: Request failed!", "error");
+                    });
+            };
+        </script>
+    </body>
+</html>

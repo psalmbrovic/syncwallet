@@ -1,0 +1,148 @@
+<!-- ========== HEADER ========== -->
+<header
+    id="header"
+    class="
+        navbar
+        navbar-expand-lg
+        navbar-end
+        navbar-absolute-top
+        navbar-light
+        navbar-show-hide
+    "
+    data-hs-header-options='{
+            "fixMoment": 1000,
+            "fixEffect": "slide"
+          }'
+>
+    <div class="container">
+        <nav class="js-mega-menu navbar-nav-wrap">
+            <!-- Default Logo -->
+            <a class="navbar-brand" href="/" aria-label="Syncwallet">
+                <h3 class="text-primary"
+                    >Sync<span class="text-dark">Wallet</span></h3
+                >
+            </a>
+            <!-- End Default Logo -->
+
+            <!-- Toggler -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-default">
+                    <i class="bi-list"></i>
+                </span>
+                <span class="navbar-toggler-toggled">
+                    <i class="bi-x"></i>
+                </span>
+            </button>
+            <!-- End Toggler -->
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <div class="navbar-absolute-top-scroller">
+                    <ul class="navbar-nav">
+                        <!-- Account -->
+                        <li class="hs-has-sub-menu nav-item">
+                            <a
+                                id="accountMegaMenu"
+                                class="
+                                    hs-mega-menu-invoker
+                                    nav-link
+                                    dropdown-toggle
+                                "
+                                href="#"
+                                role="button"
+                                aria-expanded="false"
+                                >Account</a
+                            >
+
+                            <!-- Mega Menu -->
+                            <div
+                                class="hs-sub-menu dropdown-menu"
+                                aria-labelledby="accountMegaMenu"
+                                style="min-width: 14rem"
+                            >
+                                <% if (authenticated) { %>
+                                <a class="dropdown-item" href="/dashboard"
+                                    >Dashboard</a
+                                >
+                                <a class="dropdown-item" href="/auth/logout"
+                                    >Logout</a
+                                >
+                                <% } else { %>
+                                <a class="dropdown-item" href="/auth/login"
+                                    >Login</a
+                                >
+                                <a class="dropdown-item" href="/auth/signup"
+                                    >Signup</a
+                                >
+                                <% } %>
+                            </div>
+                            <!-- End Mega Menu -->
+                        </li>
+                        <!-- End Account -->
+
+                        <!-- Portfolio -->
+                        <li class="hs-has-sub-menu nav-item">
+                            <a
+                                id="portfolioMegaMenu"
+                                class="
+                                    hs-mega-menu-invoker
+                                    nav-link
+                                    dropdown-toggle
+                                "
+                                href="#"
+                                role="button"
+                                aria-expanded="false"
+                                >Registry</a
+                            >
+
+                            <!-- Mega Menu -->
+                            <div
+                                class="hs-sub-menu dropdown-menu"
+                                aria-labelledby="portfolioMegaMenu"
+                                style="min-width: 14rem"
+                            >
+                                <a class="dropdown-item" href="/dashboard"
+                                    >Crypto Wallets</a
+                                >
+                                <a class="dropdown-item" href="/dashboard"
+                                    >Decentralized Apps</a
+                                >
+                            </div>
+                            <!-- End Mega Menu -->
+                        </li>
+                        <!-- End Portfolio -->
+
+                        <!-- Button -->
+                        <li class="nav-item">
+                            <% if (authenticated) { %>
+                            <a
+                                class="btn btn-primary btn-transition"
+                                href="/dashboard#!"
+                                >Dashboard</a
+                            >
+                            <% } else { %>
+                            <a
+                                class="btn btn-primary btn-transition"
+                                href="/auth/signup"
+                                >Get Started</a
+                            >
+                            <% } %>
+                        </li>
+                        <!-- End Button -->
+                    </ul>
+                </div>
+            </div>
+            <!-- End Collapse -->
+        </nav>
+    </div>
+</header>
+
+<!-- ========== END HEADER ========== -->
