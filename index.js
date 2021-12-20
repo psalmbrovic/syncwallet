@@ -8,6 +8,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const { authCheck } = require("./middlewares/AuthMiddleware");
 const AuthRoute = require("./routes/AuthRouter");
+const { clientErrorHandler } = require("./middlewares/errors/HandleErrors");
 
 const LogStream = fs.createWriteStream(path.join(__dirname, "syncwallet.log"), {
     flags: "a",
@@ -66,6 +67,9 @@ app.get("/", (request, response) => {
 app.get("/dashboard", authCheck, (request, response) => {
     response.render("dashboard");
 });
+
+// Error handling middlewares
+app.use(clientErrorHandler);
 
 server.listen(port, () => {
     console.log(`Listening on port: ${port}`);

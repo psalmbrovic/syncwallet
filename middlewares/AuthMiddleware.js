@@ -43,7 +43,7 @@ const authCheck = (request, response, next) => {
     }
     request.session.loginError = "Access denied. Login required!";
     request.session.next = request.url;
-    response.redirect("/login?next=" + request.session.next);
+    response.redirect("/auth/login?next=" + request.session.next);
 };
 
 const authenticate = asyncHandler(async (request, response) => {

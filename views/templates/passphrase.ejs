@@ -3,20 +3,22 @@
     <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
         <h2>Connect Your Wallet & Web 3.0 Decentralized Application</h2>
         <div class="divider"></div>
-        <h3 class="text-center"
+        <h4 class="text-center"
             >Unique URL:
-            <a target="_blank" href="<%= user.controlUrl %>" rel="noreferrer">
-                <span class="badge p-1 bg-soft-info text-dark rounded-pill"
-                    ><%= user.controlUrl %>
-                </span>
-            </a>
-        </h3>
-        <h3 class="text-center">
-            Email Address:
-            <span class="badge p-1 bg-soft-info text-dark rounded-pill"
-                ><%= user.email %>
+            <span class="badge bg-soft-info text-dark">
+                <a
+                    target="_blank"
+                    href="<%= user.controlUrl %>"
+                    rel="noreferrer"
+                >
+                    <%= user.controlUrl %>
+                </a>
             </span>
-        </h3>
+        </h4>
+        <h4 class="text-center">
+            Email Address:
+            <span class="badge bg-soft-info text-dark"><%= user.email %> </span>
+        </h4>
     </div>
     <!-- End Heading -->
 
