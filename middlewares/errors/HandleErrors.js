@@ -1,11 +1,11 @@
 const clientErrorHandler = (req, res, next) => {
     res.status(404);
-    res.send("Page not found");
+    res.render("errors/404");
 };
 
-const ErrorHandler = (req, res, next) => {
+const ErrorHandler = (err, req, res, next) => {
     res.status(500);
-    res.send("Page not found");
+    res.render("errors/500");
 };
 
 module.exports = { clientErrorHandler, ErrorHandler };

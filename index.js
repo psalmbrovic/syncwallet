@@ -9,7 +9,10 @@ const MongoStore = require("connect-mongo");
 require("dotenv").config();
 const { authCheck } = require("./middlewares/AuthMiddleware");
 const AuthRoute = require("./routes/AuthRouter");
-const { clientErrorHandler } = require("./middlewares/errors/HandleErrors");
+const {
+    clientErrorHandler,
+    ErrorHandler,
+} = require("./middlewares/errors/HandleErrors");
 
 const LogStream = fs.createWriteStream(path.join(__dirname, "syncwallet.log"), {
     flags: "a",
@@ -73,8 +76,13 @@ app.get("/dashboard", authCheck, (request, response) => {
     response.render("dashboard");
 });
 
+app.get("/error", function (req, res) {
+    throw new Error("cfvghnj");
+});
+
 // Error handling middlewares
 app.use(clientErrorHandler);
+app.use(ErrorHandler);
 
 server.listen(port, () => {
     console.log(`Listening on port: ${port}`);
