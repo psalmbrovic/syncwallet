@@ -8,4 +8,9 @@ const ErrorHandler = (err, req, res, next) => {
     res.render("errors/500");
 };
 
+const ErrorLogger = (err, req, res, next) => {
+    // log the error
+    next(err);
+};
+
 module.exports = { clientErrorHandler, ErrorHandler };

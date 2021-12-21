@@ -6,6 +6,8 @@ const connectDB = require("./config/database");
 const session = require("express-session");
 const morgan = require("morgan");
 const MongoStore = require("connect-mongo");
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
 require("dotenv").config();
 const { authCheck } = require("./middlewares/AuthMiddleware");
 const AuthRoute = require("./routes/AuthRouter");
@@ -26,10 +28,23 @@ const db = connectDB();
 
 const port = process.env.PORT || 4000;
 
+Sentry.init({
+    dsn: "https://4f608a2114b440e9957713559edc96e5@o439434.ingest.sentry.io/5406225",
+    integrations: [
+        // enable HTTP calls tracing
+        new Sentry.Integrations.Http({ tracing: true }),
+        // enable Express.js middleware tracing
+        new Tracing.Integrations.Express({ app }),
+    ],
+    tracesSampleRate: 0.7,
+});
+
 // Serve the express app over https
 const server = http.createServer(app);
 
 // Register middlewares
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("common", { stream: LogStream }));
 app.use(express.json());
@@ -77,8 +92,10 @@ app.get("/dashboard", authCheck, (request, response) => {
 });
 
 app.get("/error", function (req, res) {
-    throw new Error("cfvghnj");
+    res.send(name);
 });
+
+app.use(Sentry.Handlers.errorHandler());
 
 // Error handling middlewares
 app.use(clientErrorHandler);
