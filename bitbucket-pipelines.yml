@@ -1,0 +1,32 @@
+image: node:14.16.0
+
+pipelines:
+    default:
+        - step:
+              name: Build and install dependencies
+              caches:
+                  - node
+              script:
+                  - npm install
+        - step:
+              name: Run unit tests
+              script:
+                  - npm test
+              caches:
+                  - node
+        - step:
+              name: Create Artifacts
+              script:
+                  - git archive --format=tar.gz main -o application.tar.gz
+        - step:
+              name: Deploy to Heroku
+              deployment: staging
+              caches:
+                  - node
+              script:
+                  - pipe: atlassian/heroku-deploy:1.2.1
+                    variables:
+                        HEROKU_API_KEY: $HEROKU_API_KEY
+                        HEROKU_APP_NAME: $HEROKU_APP_NAME
+                        ZIP_FILE: 'application.tar.gz'
+                        WAIT: 'true' # Wait for the deployment to finish
