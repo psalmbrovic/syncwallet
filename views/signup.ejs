@@ -62,7 +62,7 @@
         <style>
             body,
             html {
-                font-family: "Comfortaa", cursive;
+                font-family: 'Comfortaa', cursive;
                 /* font-weight: 700; */
             }
         </style>
@@ -271,26 +271,26 @@
             (function () {
                 // INITIALIZATION OF HEADER
                 // =======================================================
-                new HSHeader("#header").init();
+                new HSHeader('#header').init();
 
                 // INITIALIZATION OF MEGA MENU
                 // =======================================================
-                new HSMegaMenu(".js-mega-menu", {
+                new HSMegaMenu('.js-mega-menu', {
                     desktop: {
-                        position: "left",
+                        position: 'left',
                     },
                 });
 
                 // INITIALIZATION OF SHOW ANIMATIONS
                 // =======================================================
-                new HSShowAnimation(".js-animation-link");
+                new HSShowAnimation('.js-animation-link');
 
                 // INITIALIZATION OF BOOTSTRAP VALIDATION
                 // =======================================================
-                HSBsValidation.init(".js-validate", {
+                HSBsValidation.init('.js-validate', {
                     onSubmit: (data) => {
                         data.event.preventDefault();
-                        alert("Submited");
+                        alert('Submited');
                     },
                 });
 
@@ -300,7 +300,7 @@
 
                 // INITIALIZATION OF GO TO
                 // =======================================================
-                new HSGoTo(".js-go-to");
+                new HSGoTo('.js-go-to');
 
                 // INITIALIZATION OF AOS
                 // =======================================================
@@ -311,11 +311,11 @@
 
                 // INITIALIZATION OF SWIPER
                 // =======================================================
-                var swiper = new Swiper(".js-swiper-software-hero", {
-                    preloaderClass: "custom-swiper-lazy-preloader",
+                var swiper = new Swiper('.js-swiper-software-hero', {
+                    preloaderClass: 'custom-swiper-lazy-preloader',
                     slidesPerView: 1,
                     pagination: {
-                        el: ".js-swiper-software-hero-pagination",
+                        el: '.js-swiper-software-hero-pagination',
                         dynamicBullets: true,
                         clickable: true,
                     },
@@ -340,7 +340,7 @@
                     on: {
                         imagesReady: function (swiper) {
                             const preloader = swiper.el.querySelector(
-                                ".js-swiper-software-hero-preloader",
+                                '.js-swiper-software-hero-preloader',
                             );
                             preloader.parentNode.removeChild(preloader);
                         },
@@ -349,7 +349,7 @@
 
                 // INITIALIZATION OF NAV SCROLLER
                 // =======================================================
-                new HsNavScroller(".js-nav-scroller");
+                new HsNavScroller('.js-nav-scroller');
             })();
         </script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -363,25 +363,27 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
             const handleSignup = (event) => {
-                const form = document.getElementById("LoginForm");
-                const signupButton = $("#signupButton");
-                const loadingButton = $("#loadingButton");
+                const form = document.getElementById('LoginForm');
+                const signupButton = $('#signupButton');
+                const loadingButton = $('#loadingButton');
                 event.preventDefault();
 
                 signupButton.hide();
                 loadingButton.show();
 
-                const email = $("#email").val();
-                const password = $("#password").val();
-                const name = $("#fullName").val();
-
+                const email = $('#email').val();
+                const password = $('#password').val();
+                const name = $('#fullName').val();
+                axios.defaults.validateStatus = function (status) {
+                    return status < 500;
+                };
                 axios
                     .post(
-                        "/auth/signup",
+                        '/auth/signup',
                         { email, password, name },
                         {
                             headers: {
-                                Accept: "application/json",
+                                Accept: 'application/json',
                             },
                         },
                     )
@@ -391,24 +393,24 @@
                         const { userCreated, next, userExists } = response.data;
                         if (userCreated) {
                             swal(
-                                "Success",
-                                "Account created successfully!",
-                                "success",
+                                'Success',
+                                'Account created successfully!',
+                                'success',
                             );
 
                             setTimeout(function () {
-                                window.location.href = "/dashboard";
+                                window.location.href = '/dashboard';
                             }, 2000);
                         } else if (userExists) {
-                            swal("Oops!", "User Already Exist!", "warning");
+                            swal('Oops!', 'User Already Exist!', 'warning');
                         } else {
-                            swal("Oops!", "An error has occurred!", "error");
+                            swal('Oops!', 'An error has occurred!', 'error');
                         }
                     })
                     .catch((error) => {
                         signupButton.show();
                         loadingButton.hide();
-                        swal("Oops!", "Error: Request failed!", "error");
+                        swal('Oops!', 'Error: Request failed!', 'error');
                     });
             };
         </script>

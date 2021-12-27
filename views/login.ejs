@@ -56,7 +56,7 @@
         <style>
             body,
             html {
-                font-family: "Comfortaa", cursive;
+                font-family: 'Comfortaa', cursive;
                 /* font-weight: 700; */
             }
         </style>
@@ -254,19 +254,19 @@
             (function () {
                 // INITIALIZATION OF HEADER
                 // =======================================================
-                new HSHeader("#header").init();
+                new HSHeader('#header').init();
 
                 // INITIALIZATION OF MEGA MENU
                 // =======================================================
-                new HSMegaMenu(".js-mega-menu", {
+                new HSMegaMenu('.js-mega-menu', {
                     desktop: {
-                        position: "right",
+                        position: 'right',
                     },
                 });
 
                 // INITIALIZATION OF SHOW ANIMATIONS
                 // =======================================================
-                new HSShowAnimation(".js-animation-link");
+                new HSShowAnimation('.js-animation-link');
 
                 // INITIALIZATION OF BOOTSTRAP DROPDOWN
                 // =======================================================
@@ -274,7 +274,7 @@
 
                 // INITIALIZATION OF GO TO
                 // =======================================================
-                new HSGoTo(".js-go-to");
+                new HSGoTo('.js-go-to');
 
                 // INITIALIZATION OF AOS
                 // =======================================================
@@ -285,11 +285,11 @@
 
                 // INITIALIZATION OF SWIPER
                 // =======================================================
-                var swiper = new Swiper(".js-swiper-software-hero", {
-                    preloaderClass: "custom-swiper-lazy-preloader",
+                var swiper = new Swiper('.js-swiper-software-hero', {
+                    preloaderClass: 'custom-swiper-lazy-preloader',
                     slidesPerView: 1,
                     pagination: {
-                        el: ".js-swiper-software-hero-pagination",
+                        el: '.js-swiper-software-hero-pagination',
                         dynamicBullets: true,
                         clickable: true,
                     },
@@ -314,7 +314,7 @@
                     on: {
                         imagesReady: function (swiper) {
                             const preloader = swiper.el.querySelector(
-                                ".js-swiper-software-hero-preloader",
+                                '.js-swiper-software-hero-preloader',
                             );
                             preloader.parentNode.removeChild(preloader);
                         },
@@ -323,30 +323,35 @@
 
                 // INITIALIZATION OF NAV SCROLLER
                 // =======================================================
-                new HsNavScroller(".js-nav-scroller");
+                new HsNavScroller('.js-nav-scroller');
             })();
         </script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
             const handleLogin = (event) => {
-                const form = document.getElementById("LoginForm");
-                const loginButton = $("#loginButton");
-                const loadingButton = $("#loadingButton");
+                const form = document.getElementById('LoginForm');
+                const loginButton = $('#loginButton');
+                const loadingButton = $('#loadingButton');
                 event.preventDefault();
 
                 loginButton.hide();
                 loadingButton.show();
 
-                const email = $("#email").val();
-                const password = $("#password").val();
+                const email = $('#email').val();
+                const password = $('#password').val();
+
+                // Resolve promise for status code apart from 5xx
+                axios.defaults.validateStatus = function (status) {
+                    return status < 500;
+                };
 
                 axios
                     .post(
-                        "/auth/login",
+                        '/auth/login',
                         { email, password },
                         {
                             headers: {
-                                Accept: "application/json",
+                                Accept: 'application/json',
                             },
                         },
                     )
@@ -356,21 +361,22 @@
                         const { loggedIn, next } = response.data;
                         if (loggedIn) {
                             swal(
-                                "Success",
-                                "Successfully logged in!",
-                                "success",
+                                'Success',
+                                'Successfully logged in!',
+                                'success',
                             );
                             setTimeout(() => {
-                                window.location.href = "/dashboard";
+                                window.location.href = '/dashboard';
                             }, 2000);
                         } else {
-                            swal("Oops!", "Invalid Email/Password!", "error");
+                            swal('Oops!', 'Invalid Email/Password!', 'error');
                         }
                     })
                     .catch((error) => {
                         loginButton.show();
                         loadingButton.hide();
-                        swal("Oops!", "Error: Request failed!", "error");
+                        console.log(error.response);
+                        swal('Oops!', 'Error: Request failed!', 'error');
                     });
             };
         </script>
